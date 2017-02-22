@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 require("angular");
 /**
  * base methods for validation purposes.
@@ -37,7 +38,7 @@ var ValidationUtilities = (function () {
      * gets property name from expression.
      */
     ValidationUtilities.fromExpression = function (func) {
-        var varExtractor = new RegExp('return (.*);');
+        var varExtractor = new RegExp('return ([^;]*)(?=(;|\\}))');
         var m = varExtractor.exec(func + '');
         if (m && m.length === 2) {
             var parts = m[1].split('.');

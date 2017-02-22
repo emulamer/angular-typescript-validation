@@ -49,7 +49,7 @@ export class ValidationUtilities {
      */
     public static fromExpression<T>(func: (obj: T) => void): string {
 
-        let varExtractor: RegExp = new RegExp('return (.*);');
+        let varExtractor: RegExp = new RegExp('return ([^;]*)(?=(;|\\}))');
         let m: RegExpExecArray = varExtractor.exec(func + '');
 
         if (m && m.length === 2) {
